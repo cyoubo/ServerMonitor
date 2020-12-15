@@ -1,3 +1,5 @@
+import * as serviceImp from "../services/ServiceDataService"
+
 export default {
 
     namespace: 'ServerDataModel',
@@ -9,7 +11,14 @@ export default {
   
     effects: {
       *queryAllServiceRecord({ payload }, { call, put }) {  
-        yield put({ type: 'updateDataSource', payload : [1] });
+        const response = yield call(serviceImp.api_querySerivceRecord,payload.maxCount)
+        if(response.data !== undefined && response.data.status === true){
+          const dataSource = response.data.data
+          yield put({ type: 'updateDataSource', payload : dataSource });
+        }
+        else{
+          console.error(response.error)
+        }
       },
     },
   

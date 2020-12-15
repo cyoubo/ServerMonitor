@@ -1,6 +1,9 @@
 import { connect } from 'dva'
 import React, { Component } from 'react'
-import ServerBanner from '../../components/ServerBanner/ServerBanner'
+import ServiceBanner from '../../components/ServiceBanner/ServiceBanner'
+import * as action from "../../actions/ServerAction"
+import ServiceList from '../../components/ServiceList/ServiceList'
+import ServiceChart from '../../components/ServiceChart/ServiceChart'
 
 class AppPage extends Component {
     
@@ -13,12 +16,12 @@ class AppPage extends Component {
 
     componentDidMount(){
         let currentTaskID = setInterval(()=>{
-            
-        },5000)
+            this.props.dispatch(action.queryAllServiceRecord(100))
+        }, 5000)
         this.setState({currentTaskID: currentTaskID})
     }
 
-    componentWillUnmount(){
+    UNSAFE_componentWillUpdate(){
         if (this.state.currentTaskID!== undefined){
             clearInterval(this.state.currentTaskID)
         }
@@ -27,7 +30,9 @@ class AppPage extends Component {
     render() {
         return (
             <div>
-                <ServerBanner></ServerBanner>
+                <ServiceBanner></ServiceBanner>
+                <ServiceList></ServiceList>
+                <ServiceChart></ServiceChart>
             </div>
         )
     }
