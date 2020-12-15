@@ -10,8 +10,8 @@ export function generatePostOptions(contentType, param) {
     let body = {}
     switch(contentType)
     {
-        case "application/x-www-form-urlencoded" : body = convert2xwwwformurlencoded(param)
-        default : param = JSON.parse(JSON.stringify(param))
+        case "application/x-www-form-urlencoded" : body = convert2xwwwformurlencoded(param);break;
+        default : param = JSON.parse(JSON.stringify(param));break;
     }
 
     let requestOptions = {
@@ -26,8 +26,9 @@ export function generatePostOptions(contentType, param) {
 
 function convert2xwwwformurlencoded(param){
     let urlencoded = new URLSearchParams();
-    Object.keys(param).map((key)=>{
+    Object.keys(param).map((key)=>{ 
         urlencoded.append(key, param[key])
+        return ""
     })
     return urlencoded;
 }

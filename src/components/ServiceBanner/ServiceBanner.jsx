@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import moment from "moment"
+import * as style from "./ServiceBanner.css"
 
 export default function ServerBanner() {
 
@@ -19,9 +20,9 @@ export default function ServerBanner() {
     }, [])
 
     return (
-        <div>
-            <div>资产记录监管平台</div>
-            <div>{formateDate()}</div>        
+        <div className = {style.banner_out}>
+            <div className = {style.banner_title}>资产记录监管平台</div>
+            <div className = {style.banner_time}>{formateDate()}</div>        
         </div>
     )
 }

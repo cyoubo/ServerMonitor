@@ -4,6 +4,8 @@ import ServiceBanner from '../../components/ServiceBanner/ServiceBanner'
 import * as action from "../../actions/ServerAction"
 import ServiceList from '../../components/ServiceList/ServiceList'
 import ServiceChart from '../../components/ServiceChart/ServiceChart'
+import ServiceSystemCards from '../../components/ServiceSystemCards/ServiceSystemCards'
+import * as style from "./AppPage.css"
 
 class AppPage extends Component {
     
@@ -29,10 +31,23 @@ class AppPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className = {style.apppage_out}>
                 <ServiceBanner></ServiceBanner>
-                <ServiceList></ServiceList>
-                <ServiceChart></ServiceChart>
+                <div className = {style.apppage_context_out}>
+                    <div className = {style.apppage_servicelist}>
+                        <ServiceList></ServiceList>
+                    </div >
+                    <div className = {style.apppage_subcontext_out}>
+                        <div className = {style.apppage_cards}>
+                            <ServiceSystemCards></ServiceSystemCards>
+                        </div>
+                        <div className = {style.apppage_charts}>
+                            <ServiceChart></ServiceChart>
+                        </div>
+                    </div>
+                </div>
+                
+                
             </div>
         )
     }

@@ -1,0 +1,8 @@
+.recordlist {
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+.recordlist::-webkit-scrollbar {
+    display:none
+}

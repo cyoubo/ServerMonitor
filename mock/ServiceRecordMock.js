@@ -5,12 +5,12 @@ export default {
         return res.status(200).json(Mock.mock({
             'status': true,
             'msg': "",
-            'data|10-25': [{
+            'data|30-40': [{
                 name: "@cname",
                 time: "@datetime",
                 host: "@ip",
-                from: 1,
-                to: "@integer(2, 5)"
+                from: 0,
+                to: "@integer(1, 5)"
             }]
         }))
 

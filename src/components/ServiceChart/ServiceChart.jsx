@@ -1,11 +1,14 @@
-import { Table } from 'antd'
+import { Button, Table, Drawer } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { connect } from 'dva'
 import * as options from "./RelativeChartOption";
 import echarts from 'echarts/lib/echarts'
-import 'echarts/lib/chart/bar';  //折线图是line,饼图改为pie,柱形图改为bar
+import 'echarts/lib/chart/graph';  //折线图是line,饼图改为pie,柱形图改为bar
+import * as style from "./ServiceChart.css"
 
 function ServiceChart({ propsData }) {
+
+    const [drawerVisible, setdrawerVisible] = useState(false)
 
     useEffect(() => {
         let myChart = echarts.init(document.getElementById('chart'));
@@ -13,22 +16,45 @@ function ServiceChart({ propsData }) {
     }, [])
 
     useEffect(() => {
-       let myChart = echarts.getInstanceByDom(document.getElementById('chart'))
-       if(myChart!==undefined)
-       {
+        let myChart = echarts.getInstanceByDom(document.getElementById('chart'))
+        if (myChart !== undefined) {
             let newOption = options.modifyOptionByPropsData(myChart.getOption(), propsData)
-            console.log(newOption.series[0].data[1])
             myChart.setOption(newOption)
-       }
+        }
     }, [propsData])
 
-    return (
-        <div>
-            <div id="chart" 
-                style={{ height: "400px" }}></div>
-            <div>
-                <Table></Table>
+    const generateTableTitle = () => {
+        return (
+            <div className = {style.title_out}>
+                <div className = {style.title_text}>访问详情</div>
+                <Button 
+                    onClick = {onBtnCloseTableClickHandle}
+                    className = {style.title_btn}
+                    type = "link">关闭</Button>
             </div>
+        )
+    }
+
+    const onBtnCloseTableClickHandle = () => {
+
+    }
+ 
+    return (
+        <div className={style.chart_out}>
+            <div
+                className={style.chart}
+                id= "chart"></div>
+            <Drawer
+                    visible = {drawerVisible}
+                >
+                <div 
+                    id = "chart_table"
+                    className={style.chart_table}>
+                    <Table
+                        title={generateTableTitle}
+                        ></Table>
+                </div>
+            </Drawer>
         </div>
     )
 }

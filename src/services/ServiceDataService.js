@@ -1,5 +1,6 @@
-import request from '../utils/request';
 import * as requestOptionApi from "../utils/requetOpitonBuilder"
+import * as systemNames  from "../enums/SystemNameSet"
+import _ from "lodash";
 
 export async function api_querySerivceRecord(maxCount) {
 
@@ -18,4 +19,19 @@ export async function api_querySerivceRecord(maxCount) {
     } catch (err) {
         return ({ err });
     }
+}
+
+export function process_CountServiceRecordByHost(records){
+    let count_dict = _.countBy(records, (value)=> value.to)
+    let names = systemNames.getApplicationNames()
+    let result = []
+    for(let index = 1; index< names.length;index++) {
+        result.push({
+            name: systemNames.getApplicationNameByIndex(index),
+            systemId: index,
+            count : count_dict[index]!==undefined? count_dict[index]:0
+        })
+    }
+    console.log(result)
+    return result
 }

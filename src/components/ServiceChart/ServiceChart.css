@@ -1,0 +1,30 @@
+.chart_out {
+    height: 100%;
+}
+
+.chart {
+    height: 500px;
+}
+
+
+.title_out {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4c9be6;
+}
+
+.title_text {
+    padding: 4px;
+    font-weight: 600;
+    color: white;
+    height: 100%;
+}
+
+.title_btn {
+    color : white
+}
+
+:global(#chart_table .ant-table-title) {
+    padding: 0px;
+}

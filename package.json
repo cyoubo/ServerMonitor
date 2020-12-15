@@ -12,6 +12,7 @@
     "dva": "^2.4.1",
     "echarts": "^5.0.0",
     "echarts-for-react": "^2.0.16",
+    "lodash": "^4.17.20",
     "mockjs": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
