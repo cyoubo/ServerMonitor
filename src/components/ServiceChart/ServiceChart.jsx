@@ -62,6 +62,8 @@ function ServiceChart({ propsData }) {
                 className={style.chart}>
             </div>
             <Drawer
+                className = {style.drawer}
+                headerStyle = {{ backgroundColor: "#f3f3f3"}}
                 style={{ position: 'absolute' }}
                 placement="right"
                 title="服务调用详情"
@@ -69,7 +71,9 @@ function ServiceChart({ propsData }) {
                 visible={state.drawerVisible}
                 getContainer={ref_out.current}
                 onClose={onCloseDrawerClickHandle}>
-                {ongenerateDetailItem()}
+                <ul className = {style.list}>
+                    {ongenerateDetailItem()}
+                </ul>
             </Drawer>
         </div>
     )

@@ -1,15 +1,20 @@
 import React from 'react'
-import "./ServiceDetailItem.css"
+import * as style from "./ServiceDetailItem.css"
 
 export default function ServiceDetailItem({item}) {
     return (
-        <div>
-            <div>
-                {item.time}
+        <li className = {style.item_out}>
+            <div className = {style.item_head}>
+                <div className = {style.item_time}>
+                    {item.time}
+                </div>
+                <div className = {style.item_host}>
+                    {item.host}
+                </div>
             </div>
-            <div>
+            <div className = {style.item_name}>
                 {item.name}
             </div>
-        </div>
+        </li>
     )
 }

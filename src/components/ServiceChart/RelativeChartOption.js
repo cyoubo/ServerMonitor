@@ -32,27 +32,21 @@ export function initialOption() {
             show : true,
             text: '数据流向关系图',
             top: 'top',
-            left: 'right',
+            left: 'left',
             padding: [16, 16],
             textStyle: {
                 fontFamily: "Microsoft YaHei"
             }
         },
+        backgroundColor: "#f4f4f4",
         animationDuration: 1500,
         animationDurationUpdate: 100,
         animationEasingUpdate: 'cubicOut',
-        dataZoom:[
-            {
-                type : "inside",
-                disabled : true,
-                zoomOnMouseWheel : false
-            }
-        ],
         series: [
             {
                 name: 'Les Miserables',
                 type: 'graph',
-                layout: 'circular',
+                layout: 'none',
                 roam: true,
                 zoom: 0.7,
                 categories: systemNames,
@@ -83,16 +77,37 @@ export function initialOption() {
     for (let index = 0; index < systemNames.getApplicationNames().length; index++) {
         nodes.push({
             name: systemNames.getApplicationNameByIndex(index),
-            symbolSize: 70,
+            symbolSize: index === 0 ? 100 : 70,
             category: index,
             itemStyle: {
                 color: systemColors.getSystemColorsByIndex(index)
+            },
+            x:coordinate[index][0],
+            y:coordinate[index][1],
+            label: {
+                position : calLabelPostion(coordinate[index][1])
             }
         })
     }
-    nodes[0].x = 100
-    nodes[0].y = 100
     nodes[0].label = { position : "inside"}
     options.series[0].data = nodes
     return options
+}
+
+const coordinate = [
+    [55,50],
+    [10,30],
+    [20,80],
+    [40,10],
+    [70,90],
+    [90,40],
+] 
+
+function calLabelPostion(y_coor) {
+    if(y_coor === 50)
+        return "inside";
+    else if(y_coor> 50)
+        return "bottom"
+    else
+        return "top"
 }

@@ -31,3 +31,16 @@
 :global(#chart_table .ant-table-title) {
     padding: 0px;
 }
+
+.list {
+    padding-left: 0;
+    width: max-content;
+}
+
+.list::-webkit-scrollbar {
+    display:none
+}
+
+.drawer::-webkit-scrollbar {
+    display:none
+}

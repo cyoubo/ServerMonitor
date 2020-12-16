@@ -27,7 +27,7 @@ function ServiceSystemCards({ propsData }) {
         <List
             id = "systemcardlist"
             header = {<div className = {style.listhead}>应用服务访问总量</div>}
-            grid={{ gutter: 5, column: systemName.getApplicationNames().length -1 }}
+            grid={{ gutter: 10, column: systemName.getApplicationNames().length -1 }}
             dataSource={service.process_CountServiceRecordByHost(propsData.dataSource)}
             renderItem={item => {
                 return <List.Item>
