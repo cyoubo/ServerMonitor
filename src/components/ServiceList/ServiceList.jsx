@@ -7,6 +7,7 @@ import * as style from "./ServiceList.css"
 function ServiceList({ propsData }) {
 
     return <List
+        header = {<div className = {style.listheader}>实时服务访问列表</div>}
         className={style.recordlist}
         dataSource={propsData.dataSource}
         loading = {propsData.dataSource.length === 0}

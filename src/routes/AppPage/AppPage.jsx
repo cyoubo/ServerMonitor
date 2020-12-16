@@ -7,6 +7,7 @@ import ServiceChart from '../../components/ServiceChart/ServiceChart'
 import ServiceSystemCards from '../../components/ServiceSystemCards/ServiceSystemCards'
 import * as style from "./AppPage.css"
 
+
 class AppPage extends Component {
     
     constructor(props){

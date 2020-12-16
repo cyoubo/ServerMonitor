@@ -1,9 +1,12 @@
 .chart_out {
     height: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f3f3f3;
 }
 
 .chart {
-    height: 500px;
+    height: calc(100%);
 }
 
 

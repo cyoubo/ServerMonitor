@@ -1,5 +1,9 @@
 import * as systemNames from "../../enums/SystemNameSet"
+import * as systemColors from "../../enums/SystemColorSet"
 
+const curveness_defalut = [
+    -0.7,0.7,-0.6,0.6,-0.5,0.5,-0.4,0.4,-0.3,0.3,-0.2,0.2
+]
 
 export function modifyOptionByPropsData(options, propsData) {
     //添加调用信息（连接线）
@@ -13,8 +17,8 @@ export function modifyOptionByPropsData(options, propsData) {
                 symbolOffset: [0, 8],
                 lineStyle: {
                     width: 3,
-                    color: 'target',
-                    curveness: Math.random() * 0.8 - Math.random() * 0.5
+                    color: systemColors.getSystemColorsByIndex([value.to]),
+                    curveness: curveness_defalut[index%curveness_defalut.length]
                 }
             }
         })
@@ -25,6 +29,7 @@ export function modifyOptionByPropsData(options, propsData) {
 export function initialOption() {
     let options = {
         title: {
+            show : true,
             text: '数据流向关系图',
             top: 'top',
             left: 'right',
@@ -33,18 +38,16 @@ export function initialOption() {
                 fontFamily: "Microsoft YaHei"
             }
         },
-
-        legend: [{
-            data: systemNames.getApplicationNames().map(function (a) {
-                return a.name;
-            }),
-            orient: "vertical",
-            left: "2.5%",
-            top: "bottom"
-        }],
         animationDuration: 1500,
         animationDurationUpdate: 100,
         animationEasingUpdate: 'cubicOut',
+        dataZoom:[
+            {
+                type : "inside",
+                disabled : true,
+                zoomOnMouseWheel : false
+            }
+        ],
         series: [
             {
                 name: 'Les Miserables',
@@ -81,7 +84,10 @@ export function initialOption() {
         nodes.push({
             name: systemNames.getApplicationNameByIndex(index),
             symbolSize: 70,
-            category: index
+            category: index,
+            itemStyle: {
+                color: systemColors.getSystemColorsByIndex(index)
+            }
         })
     }
     nodes[0].x = 100

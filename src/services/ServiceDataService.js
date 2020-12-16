@@ -32,6 +32,9 @@ export function process_CountServiceRecordByHost(records){
             count : count_dict[index]!==undefined? count_dict[index]:0
         })
     }
-    console.log(result)
     return result
+}
+
+export function process_FilterServiceRecordBySystemId(records, systemId){
+    return _.filter(records,(value)=> value.to === systemId)
 }

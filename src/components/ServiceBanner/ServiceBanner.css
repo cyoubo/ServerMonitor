@@ -3,7 +3,8 @@
     justify-content: space-between;
     height: 50px;
     line-height: 50px;
-
+    border-bottom: 4px solid #f2f2f2;
+    background-color: #626c91;
 }
 
 .banner_title{
@@ -11,11 +12,13 @@
     font-size: 20px;
     box-sizing: border-box;
     padding-left: 14px;
+    color: white;
+    
 }
 
 .banner_time{
     box-sizing: border-box;
     padding-right: 14px;
     font-weight: 500;
-    color: #4c9be6;
+    color: white;
 }

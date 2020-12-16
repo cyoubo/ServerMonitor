@@ -1,0 +1,12 @@
+.listhead {
+    font-family: "Microsoft YaHei";
+    font-size: 17px;
+    color: #464646;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+:global(#systemcardlist .ant-list-header) {
+    border-bottom: none;
+}
